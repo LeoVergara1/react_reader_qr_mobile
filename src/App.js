@@ -30,6 +30,7 @@ function App() {
 
   function handleScan(data) {
     if (data) {
+      console.log(data);
       setResult(data)
     }
   }
@@ -58,14 +59,15 @@ function App() {
         >
         </a>
         Learn React
+        <p>{result.text}</p>
         <QrReader
           delay={delay}
           style={previewStyle}
           onError={handleError}
           onScan={handleScan}
-          chooseDeviceId={selectCamera}
+          //chooseDeviceId={selectCamera}
+          constraints={{ audio: false, video: { deviceId: cameraId } }}
         />
-        <p>{result}</p>
         <select
           onChange={e => {
             const value = e.target.value
